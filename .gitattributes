@@ -3,3 +3,10 @@
 *.m linguist-detectable=false
 *.h linguist-detectable=false
 CMakeLists.txt linguist-detectable=false
+*.dart linguist-language=Dart
+*.html linguist-generated=true
+*.js linguist-generated=true
+*.css linguist-generated=true
+build/* linguist-generated=true
+web/build/* linguist-generated=true
+* linguist-language=Dart
