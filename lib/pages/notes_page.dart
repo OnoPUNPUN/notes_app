@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:notes_app/components/my_drawer.dart';
 import 'package:notes_app/models/note.dart';
 import 'package:notes_app/models/note_database.dart';
 
@@ -42,7 +43,10 @@ class _NotesPageState extends State<NotesPage> {
         actions: [
           TextButton(
             onPressed: () => Get.back(),
-            child: const Text('Cancel'),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -54,7 +58,10 @@ class _NotesPageState extends State<NotesPage> {
                 Get.snackbar('Error', 'Note cannot be empty');
               }
             },
-            child: const Text('Create'),
+            child: const Text(
+              'Create',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
         ],
       ),
@@ -118,7 +125,7 @@ class _NotesPageState extends State<NotesPage> {
         backgroundColor: Colors.white,
         child: const Icon(Icons.add, color: Colors.black),
       ),
-      drawer: Drawer(),
+      drawer: const MyDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -154,6 +161,7 @@ class _NotesPageState extends State<NotesPage> {
                   itemBuilder: (context, index) {
                     final note = currentNotes[index];
                     return Card(
+                      elevation: 0,
                       child: ListTile(
                         title: Text(
                           note.text,

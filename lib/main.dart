@@ -8,8 +8,9 @@ import 'package:notes_app/theme/theme_controller.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await NoteDatabase.initialize();
-
-  runApp(GetMaterialApp(home: MyApp(), initialBinding: ControllerBinders()));
+  ControllerBinders()
+      .dependencies(); // to call my binders before runing  the app
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      initialBinding: ControllerBinders(),
       debugShowCheckedModeBanner: false,
       home: NotesPage(),
       theme: Get.find<ThemeController>().themeData,
