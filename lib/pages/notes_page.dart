@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notes_app/components/my_drawer.dart';
+import 'package:notes_app/components/note_tile.dart';
 import 'package:notes_app/models/note.dart';
 import 'package:notes_app/models/note_database.dart';
 
@@ -161,29 +162,12 @@ class _NotesPageState extends State<NotesPage> {
                   itemBuilder: (context, index) {
                     final note = currentNotes[index];
                     return Card(
-                      elevation: 0,
-                      child: ListTile(
-                        title: Text(
-                          note.text,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              onPressed: () => updateNote(note),
-                              icon: const Icon(Icons.edit),
-                              tooltip: 'Edit Note',
-                            ),
-                            IconButton(
-                              onPressed: () => deleteNote(note.id),
-                              icon: const Icon(Icons.delete),
-                              tooltip: 'Delete Note',
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
+                        elevation: 0,
+                        child: NoteTile(
+                          text: note.text,
+                          onEditPressed: () => updateNote(note),
+                          onDeletePressed: () => deleteNote(note.id),
+                        ));
                   },
                 );
               },

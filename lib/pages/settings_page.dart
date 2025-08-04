@@ -14,18 +14,31 @@ class SettingsPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         foregroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: Row(
-        children: [
-          //dark mode
-          Text("Dark Mode"),
+      body: Container(
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
+            borderRadius: BorderRadius.circular(12)),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+        margin: const EdgeInsets.only(left: 25, right: 25, top: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            //dark mode
+            Text(
+              "Dark Mode",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.inversePrimary),
+            ),
 
-          //switch toggle
-          Switch(
-              value: Get.find<ThemeController>().isDarkMode,
-              onChanged: (Value) {
-                Get.find<ThemeController>().toggleTheme();
-              })
-        ],
+            //switch toggle
+            Switch(
+                value: Get.find<ThemeController>().isDarkMode,
+                onChanged: (Value) {
+                  Get.find<ThemeController>().toggleTheme();
+                })
+          ],
+        ),
       ),
     );
   }
