@@ -24,6 +24,7 @@ class NoteDatabase extends GetxController {
     await isar.writeTxn(() => isar.notes.put(newNote));
 
     // re-read from db
+    await fetchNotes();
   }
 
   // R E A D -- notes from db
