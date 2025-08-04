@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:notes_app/theme/theme_controller.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -11,6 +13,19 @@ class SettingsPage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+      ),
+      body: Row(
+        children: [
+          //dark mode
+          Text("Dark Mode"),
+
+          //switch toggle
+          Switch(
+              value: Get.find<ThemeController>().isDarkMode,
+              onChanged: (Value) {
+                Get.find<ThemeController>().toggleTheme();
+              })
+        ],
       ),
     );
   }
