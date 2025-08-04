@@ -36,6 +36,7 @@ class _NotesPageState extends State<NotesPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         title: const Text('Create Note'),
         content: TextField(
           controller: textController,
@@ -46,7 +47,7 @@ class _NotesPageState extends State<NotesPage> {
             onPressed: () => Get.back(),
             child: const Text(
               'Cancel',
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.white),
             ),
           ),
           TextButton(
@@ -61,7 +62,7 @@ class _NotesPageState extends State<NotesPage> {
             },
             child: const Text(
               'Create',
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ],
@@ -80,6 +81,7 @@ class _NotesPageState extends State<NotesPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         title: const Text('Update Note'),
         content: TextField(
           controller: textController,
@@ -88,7 +90,11 @@ class _NotesPageState extends State<NotesPage> {
         actions: [
           TextButton(
             onPressed: () => Get.back(),
-            child: const Text('Cancel'),
+            child: Text(
+              'Cancel',
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -100,7 +106,11 @@ class _NotesPageState extends State<NotesPage> {
                 Get.snackbar('Error', 'Note cannot be empty');
               }
             },
-            child: const Text('Update'),
+            child: Text(
+              'Update',
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary),
+            ),
           ),
         ],
       ),
@@ -123,8 +133,11 @@ class _NotesPageState extends State<NotesPage> {
       backgroundColor: Theme.of(context).colorScheme.surface,
       floatingActionButton: FloatingActionButton(
         onPressed: createNote,
-        backgroundColor: Colors.white,
-        child: const Icon(Icons.add, color: Colors.black),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        child: Icon(
+          Icons.add,
+          color: Theme.of(context).colorScheme.inversePrimary,
+        ),
       ),
       drawer: const MyDrawer(),
       body: Column(
